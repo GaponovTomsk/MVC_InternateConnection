@@ -1,12 +1,19 @@
 package com.mvc.mvc_internateconnection.controller;
 
+
 import com.mvc.mvc_internateconnection.model.Statement;
 import com.mvc.mvc_internateconnection.model.TariffType;
 import com.mvc.mvc_internateconnection.repository.StatementRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class StatementController {
@@ -15,6 +22,13 @@ public class StatementController {
 
     public StatementController(StatementRepository statementRepository) {
         this.statementRepository = statementRepository;
+    }
+
+    @GetMapping(value="/admin-panel")
+    public String getAdminPanel(Model model) {
+        List<Statement> all = statementRepository.findAll();
+        model.addAttribute("statementList", all);
+        return "admin_panel";
     }
 
 

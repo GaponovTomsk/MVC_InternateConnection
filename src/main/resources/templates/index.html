@@ -3,19 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/style.css">
+
     <title>Internet Connection Registration</title>
     <style>
+        /* Основные стили */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #e6f7ff; /* Нежно-голубой фон */
+            font-family: 'Roboto', sans-serif;
+            color: #333;
             margin: 0;
             padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            text-align: center;
         }
 
+        /* Навигационная панель */
+        .navbar {
+            background-color: #2c85b6; /* Яркий синий */
+            padding: 10px 20px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #ffffff !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            margin-right: 15px;
+            font-size: 1.1rem;
+        }
+
+        .nav-link:hover {
+            color: #ffdd57 !important; /* Ярко-желтый при наведении */
+        }
+
+        /* Форма регистрации */
         .registration-form {
             background-color: #fff;
             padding: 20px;
@@ -76,6 +108,23 @@
     </style>
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Панель управления</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Подключиться</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin-panel">Админ панель</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 <div class="registration-form">
     <h2>Заявка на подключение интернета</h2>
