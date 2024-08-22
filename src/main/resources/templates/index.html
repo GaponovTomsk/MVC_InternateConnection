@@ -5,27 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
-    <link rel="stylesheet" href="/style.css">
-
     <title>Internet Connection Registration</title>
     <style>
-        /* Основные стили */
         body {
-            background-color: #e6f7ff; /* Нежно-голубой фон */
+            background-color: #e6f7ff;
             font-family: 'Roboto', sans-serif;
             color: #333;
             margin: 0;
             padding: 0;
-            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+            min-height: 100vh; /* Обеспечиваем использование всей высоты экрана */
             text-align: center;
         }
 
-        /* Навигационная панель */
         .navbar {
-            background-color: #2c85b6; /* Яркий синий */
+            background-color: #2c85b6;
             padding: 10px 20px;
             width: 100%;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -44,10 +41,9 @@
         }
 
         .nav-link:hover {
-            color: #ffdd57 !important; /* Ярко-желтый при наведении */
+            color: #ffdd57 !important;
         }
 
-        /* Форма регистрации */
         .registration-form {
             background-color: #fff;
             padding: 20px;
@@ -55,6 +51,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 100%;
             max-width: 400px;
+            margin: 20px 0;
         }
 
         .registration-form h2 {
@@ -73,6 +70,7 @@
 
         .registration-form input[type="text"],
         .registration-form input[type="tel"],
+        .registration-form input[type="email"],
         .registration-form select {
             width: 100%;
             padding: 10px;
@@ -151,7 +149,10 @@
         <label for="phone">Номер телефона</label>
         <input type="tel" id="phone" name="phone" required>
 
-        <input type="submit" value="Submit">
+        <label for="email">Электронный адрес</label>
+        <input type="email" id="email" name="email" required>
+
+        <input type="submit" value="Отправить заявку">
     </form>
 </div>
 

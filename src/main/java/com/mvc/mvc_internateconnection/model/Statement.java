@@ -18,6 +18,8 @@ public class Statement {
     private String street;
     private String house;
     private String fio;
+    private String phone;
+    private String email;
     private LocalDateTime localDateTime;
 
     @Enumerated(EnumType.STRING)
@@ -26,12 +28,14 @@ public class Statement {
 
 
 
-    public Statement(String city, String street, String house, String fio, TariffType tariff) {
+    public Statement(String city, String street, String house, String fio, String phone,  String email, TariffType tariff) {
         this.city = city;
         this.street = street;
         this.house = house;
         tariffType = tariff;
         this.fio = fio;
+        this.phone = phone;
+        this.email = email;
         localDateTime = LocalDateTime.now();
     }
 }

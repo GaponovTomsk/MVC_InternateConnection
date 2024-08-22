@@ -43,7 +43,9 @@ public class StatementController {
                              @RequestParam String street,
                              @RequestParam String house,
                              @RequestParam String tariff,
-                             @RequestParam String phone
+                             @RequestParam String phone,
+                             @RequestParam String email
+
                              ){
 
         TariffType tariffType;
@@ -56,7 +58,8 @@ public class StatementController {
         }else {
             tariffType = TariffType.LIGHT;
         }
-        Statement statement = new Statement("Moscow", "Lenina", "12", "Dima Petrov",tariffType );
+
+        Statement statement = new Statement("Moscow", "Lenina", "12", "Dima Petrov", "8778899", "ivanov@gmail.com",tariffType );
         statementRepository.save(statement);
         System.out.println(statement);
 
