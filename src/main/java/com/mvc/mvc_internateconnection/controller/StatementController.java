@@ -6,10 +6,7 @@ import com.mvc.mvc_internateconnection.model.TariffType;
 import com.mvc.mvc_internateconnection.repository.StatementRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -33,36 +30,21 @@ public class StatementController {
 
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String getViewFormRegistrationStatement(){
+    public String getViewFormRegistrationStatement(Model model){
+        Statement statement = new Statement();
+        model.addAttribute("statement",statement);
         return "index";
     }
 
     @RequestMapping(value = "/add_bid", method = RequestMethod.POST)
-    public String addBidPost(@RequestParam String fullName,
-                             @RequestParam String city,
-                             @RequestParam String street,
-                             @RequestParam String house,
-                             @RequestParam String tariff,
-                             @RequestParam String phone,
-                             @RequestParam String email
+    public String addBidPost(@ModelAttribute Statement statement,
+                             Model model){
 
-                             ){
-
-        TariffType tariffType;
-        if (tariff.equals("Basic (50Мб) 500 руб")){
-            tariffType = TariffType.LIGHT;
-        } else if(tariff.equals("Standard (100Мб) 700 руб")){
-            tariffType = TariffType.BASIC;
-        } else if(tariff.equals("Premium (300Мб) 1000 руб")) {
-            tariffType = TariffType.ULTRA;
-        }else {
-            tariffType = TariffType.LIGHT;
-        }
-
-        Statement statement = new Statement("Moscow", "Lenina", "12", "Dima Petrov", "8778899", "ivanov@gmail.com",tariffType );
         statementRepository.save(statement);
         System.out.println(statement);
 
-        return "index";
+        model.addAttribute("fullName",statement.getFio());
+        model.addAttribute("phone", statement.getPhone());
+        return "result";
     }
 }

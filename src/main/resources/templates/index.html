@@ -126,31 +126,31 @@
 
 <div class="registration-form">
     <h2>Заявка на подключение интернета</h2>
-    <form action="/add_bid" method="post">
+    <form action="/add_bid" method="post" th:object="${statement}">
         <label for="name">ФИО</label>
-        <input type="text" id="name" name="fullName" required>
+        <input type="text" id="name" th:field ="*{fio}" required>
 
         <label for="city">Город</label>
-        <input type="text" id="city" name="city" required>
+        <input type="text" id="city" th:field="*{city}" required>
 
         <label for="street">Улица</label>
-        <input type="text" id="street" name="street" required>
+        <input type="text" id="street" th:field="*{street}" required>
 
         <label for="house">Дом</label>
-        <input type="text" id="house" name="house" required>
+        <input type="text" id="house" th:field="*{house}" required>
 
         <label for="tariff">Выбор тарифа</label>
-        <select id="tariff" name="tariff" required>
-            <option value="basic">Basic (50Мб) 500 руб</option>
-            <option value="standard">Standard (100Мб) 700 руб</option>
-            <option value="premium">Premium (300Мб) 1000 руб</option>
+        <select id="tariff" th:field="*{tariffType}" required>
+            <option value="LIGHT">Basic (50Мб) 500 руб</option>
+            <option value="BASIC">Standard (100Мб) 700 руб</option>
+            <option value="ULTRA">Premium (300Мб) 1000 руб</option>
         </select>
 
         <label for="phone">Номер телефона</label>
-        <input type="tel" id="phone" name="phone" required>
+        <input type="tel" id="phone" th:field="*{phone}" required>
 
         <label for="email">Электронный адрес</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" th:field="*{email}" required>
 
         <input type="submit" value="Отправить заявку">
     </form>

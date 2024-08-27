@@ -26,8 +26,6 @@ public class Statement {
     private TariffType tariffType;
 
 
-
-
     public Statement(String city, String street, String house, String fio, String phone,  String email, TariffType tariff) {
         this.city = city;
         this.street = street;

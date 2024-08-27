@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтверждение контакта</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="#">Админ панель</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Подключиться</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/#">Панель управления</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <h2>Спасибо, <span th:text="${fullName}">Имя пользователя</span>!</h2>
+    <p>С вами свяжутся по номеру телефона: <span th:text="${phone}">Номер телефона</span>.</p>
+
+    <!-- Кнопка перехода на главную страницу -->
+    <a href="/" class="btn btn-primary">На главную</a>
+</div>
+</body>
+</html>
