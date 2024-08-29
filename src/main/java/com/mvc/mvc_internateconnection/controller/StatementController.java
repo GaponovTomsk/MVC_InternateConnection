@@ -37,8 +37,14 @@ public class StatementController {
         return "index";
     }
 
+    @RequestMapping(value = "/entrance", method = RequestMethod.GET)
+    public String showLoginForm(Model model) {
+        model.addAttribute("admin", new Admin());  // Передача пустого объекта Admin
+        return "entrance";  // Название шаблона Thymeleaf (entrance.html)
+    }
+
     @RequestMapping(value = "/entrance", method = RequestMethod.POST)
-    public String getViewFormAdmin(@ModelAttribute Admin admin, Model model){
+    public String getViewFormAdmin( @ModelAttribute Admin admin, Model model){
         model.addAttribute("admin", admin);
         System.out.println(admin.getLogin() + " " + admin.getPassword());
         return "entrance";
