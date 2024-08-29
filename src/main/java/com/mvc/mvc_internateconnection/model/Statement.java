@@ -17,7 +17,7 @@ public class Statement {
     private String city;
     private String street;
     private String house;
-    private String fio;
+    private String fullName;
     private String phone;
     private String email;
     private LocalDateTime localDateTime;
@@ -26,12 +26,12 @@ public class Statement {
     private TariffType tariffType;
 
 
-    public Statement(String city, String street, String house, String fio, String phone,  String email, TariffType tariff) {
+    public Statement(String city, String street, String house, String fullName, String phone,  String email, TariffType tariff) {
         this.city = city;
         this.street = street;
         this.house = house;
         tariffType = tariff;
-        this.fio = fio;
+        this.fullName = fullName;
         this.phone = phone;
         this.email = email;
         localDateTime = LocalDateTime.now();

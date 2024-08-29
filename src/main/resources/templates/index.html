@@ -120,6 +120,10 @@
             <li class="nav-item">
                 <a class="nav-link" href="/admin-panel">Админ панель</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/entrance">Вход</a>
+            </li>
+
         </ul>
     </div>
 </nav>
@@ -128,7 +132,7 @@
     <h2>Заявка на подключение интернета</h2>
     <form action="/add_bid" method="post" th:object="${statement}">
         <label for="name">ФИО</label>
-        <input type="text" id="name" th:field ="*{fio}" required>
+        <input type="text" id="name" th:field ="*{fullName}" required>
 
         <label for="city">Город</label>
         <input type="text" id="city" th:field="*{city}" required>

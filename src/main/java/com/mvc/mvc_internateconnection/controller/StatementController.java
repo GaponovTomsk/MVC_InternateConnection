@@ -1,6 +1,7 @@
 package com.mvc.mvc_internateconnection.controller;
 
 
+import com.mvc.mvc_internateconnection.model.Admin;
 import com.mvc.mvc_internateconnection.model.Statement;
 import com.mvc.mvc_internateconnection.model.TariffType;
 import com.mvc.mvc_internateconnection.repository.StatementRepository;
@@ -36,6 +37,13 @@ public class StatementController {
         return "index";
     }
 
+    @RequestMapping(value = "/entrance", method = RequestMethod.POST)
+    public String getViewFormAdmin(@ModelAttribute Admin admin, Model model){
+        model.addAttribute("admin", admin);
+        System.out.println(admin.getLogin() + " " + admin.getPassword());
+        return "entrance";
+    }
+
     @RequestMapping(value = "/add_bid", method = RequestMethod.POST)
     public String addBidPost(@ModelAttribute Statement statement,
                              Model model){
@@ -43,7 +51,7 @@ public class StatementController {
         statementRepository.save(statement);
         System.out.println(statement);
 
-        model.addAttribute("fullName",statement.getFio());
+        model.addAttribute("fullName",statement.getFullName());
         model.addAttribute("phone", statement.getPhone());
         return "result";
     }

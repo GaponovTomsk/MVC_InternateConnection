@@ -75,12 +75,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="/#">Панель управления</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/entrance">Вход</a>
+            </li>
         </ul>
     </div>
 </nav>
 
 <div class="table-container">
-    <div class="table-title">Statement List</div>
+    <div class="table-title">Список регистраций</div>
     <table>
         <thead>
         <tr>
@@ -101,7 +104,7 @@
             <td th:text="${statement.city}"></td>
             <td th:text="${statement.street}"></td>
             <td th:text="${statement.house}"></td>
-            <td th:text="${statement.fio}"></td>
+            <td th:text="${statement.fullName}"></td>
             <td th:text="${statement.phone}"></td>
             <td th:text="${statement.email}"></td>
             <td th:text="${statement.localDateTime}"></td>
