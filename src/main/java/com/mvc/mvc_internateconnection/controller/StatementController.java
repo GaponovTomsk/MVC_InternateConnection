@@ -54,6 +54,7 @@ public class StatementController {
     public String addBidPost(@ModelAttribute Statement statement,
                              Model model){
 
+
         statementRepository.save(statement);
         System.out.println(statement);
 
