@@ -7,4 +7,5 @@ public interface CityService {
     City read(long id);
     City modify(City city);
     void delete(long id);
+    City findCityByName (String cityName);
 }

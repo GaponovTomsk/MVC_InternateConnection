@@ -20,7 +20,7 @@ public class City {
     @ManyToMany
     @JoinTable(
             name = "city_street",
-            joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
+            joinColumns = @JoinColumn(name = "city_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "street_id", referencedColumnName = "id")
     )
     private Set<Street> streets;

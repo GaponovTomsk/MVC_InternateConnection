@@ -34,4 +34,14 @@ public class CityServiceImpl implements CityService {
     public void delete(long id) {
         cityRepository.deleteById(id);
     }
+
+    @Override
+    public City findCityByName(String cityName) {
+        Optional<City> cityOptional = cityRepository.findCityByName(cityName);
+        if(cityOptional.isPresent()) {
+            return cityOptional.get();
+        } else {
+            return null;
+        }
+    }
 }
