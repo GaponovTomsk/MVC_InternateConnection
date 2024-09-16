@@ -6,6 +6,8 @@ import com.mvc.mvc_internateconnection.repository.CityRepository;
 import com.mvc.mvc_internateconnection.repository.StatementRepository;
 import com.mvc.mvc_internateconnection.service.city.CityService;
 import com.mvc.mvc_internateconnection.service.statement.StatementService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,7 @@ import java.util.Set;
 public class StatementController {
 
 
+    private static final Logger log = LoggerFactory.getLogger(StatementController.class);
     private StatementService statementService;
     private CityService cityService;
 
@@ -55,6 +58,12 @@ public class StatementController {
         return "entrance";
     }
 
+
+    //logic methods write in service
+    // method (check city and street -> return message (type String) and html index
+    // or null (else null hat save object statement in database))
+    //added javadoc comments
+
     @RequestMapping(value = "/add_bid", method = RequestMethod.POST)
     public String addBidPost(@ModelAttribute Statement statement,
                              Model model){
@@ -64,14 +73,27 @@ public class StatementController {
 
         City city1 = cityService.findCityByName(city);
         if(city1 == null) {
-            model.addAttribute("massage", "City is not in base");
+            model.addAttribute("message", "City is not in base");
+            log.info("message " + model.getAttribute("message"));
             return "index";
         }
 
+
         Set<Street> streetList = city1.getStreets();
-        boolean contains = streetList.contains(street);
+        boolean contains = false;
+
+        //search street in set from for -> save in contains
+        //boolean contains = streetList.contains(street);
+
+        for (Street s : streetList) {
+            if (s.getName().equals(street)) {
+                contains = true;
+                break;
+            }
+        }
+
         if(!contains) {
-            model.addAttribute("message", "Street is notin base");
+            model.addAttribute("message", "Street is not in base");
             return "index";
         }
 

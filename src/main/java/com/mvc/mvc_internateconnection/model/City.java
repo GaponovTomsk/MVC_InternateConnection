@@ -17,7 +17,7 @@ public class City {
     private long id;
     private String name;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "city_street",
             joinColumns = @JoinColumn(name = "city_id",referencedColumnName = "id"),
