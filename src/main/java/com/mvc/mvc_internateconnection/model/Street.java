@@ -17,7 +17,6 @@ public class Street {
     private long id;
     private String name;
 
-    //@ManyToMany(mappedBy = "streets")
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(mappedBy = "streets")
     private Set<City> cities;
 }

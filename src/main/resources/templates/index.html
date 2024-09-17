@@ -161,13 +161,25 @@
 
         <input type="submit" value="Отправить заявку">
 
+
         <div class="if" th:if="${message != null} ">
             <p th:text="${message}"></p>
         </div>
 
     </form>
 </div>
-
-
+<!--
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Script is running');
+        // Получаем сообщение из Thymeleaf и вставляем его в alert
+        var message = /*[[${message}]]*/ '';
+        console.log('Message:', message);
+        if (message) {
+            alert(message);
+        }
+    });
+</script>
+-->
 </body>
 </html>

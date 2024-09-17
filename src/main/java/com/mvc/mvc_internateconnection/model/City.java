@@ -20,8 +20,8 @@ public class City {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "city_street",
-            joinColumns = @JoinColumn(name = "city_id",referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "street_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "city_id"),
+            inverseJoinColumns = @JoinColumn(name = "street_id")
     )
     private Set<Street> streets;
 }

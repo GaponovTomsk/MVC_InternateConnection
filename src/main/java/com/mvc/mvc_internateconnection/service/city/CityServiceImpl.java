@@ -22,7 +22,7 @@ public class CityServiceImpl implements CityService {
     @Override
     public City read(long id) {
        Optional<City> cityOptional  = cityRepository.findById(id);
-       return cityOptional.isPresent() ? cityOptional.get() : null;
+       return cityOptional.orElse(null);
     }
 
     @Override
@@ -37,11 +37,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City findCityByName(String cityName) {
-        Optional<City> cityOptional = cityRepository.findCityByName(cityName);
-        if(cityOptional.isPresent()) {
-            return cityOptional.get();
-        } else {
-            return null;
-        }
+        Optional<City> cityOptional = cityRepository.findCityByNameWithStreets(cityName);
+        return cityOptional.orElse(null);
     }
 }

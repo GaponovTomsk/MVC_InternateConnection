@@ -65,8 +65,7 @@ public class StatementController {
     //added javadoc comments
 
     @RequestMapping(value = "/add_bid", method = RequestMethod.POST)
-    public String addBidPost(@ModelAttribute Statement statement,
-                             Model model){
+    public String addBidPost(@ModelAttribute Statement statement, Model model){
 
         String street = statement.getStreet();
         String city = statement.getCity();
@@ -80,6 +79,7 @@ public class StatementController {
 
 
         Set<Street> streetList = city1.getStreets();
+        log.info(streetList.toString());
         boolean contains = false;
 
         //search street in set from for -> save in contains
