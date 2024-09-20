@@ -17,6 +17,7 @@ public class Street {
     private long id;
     private String name;
 
-    @ManyToMany(mappedBy = "streets")
+    //@ManyToMany()
+    @ManyToMany(mappedBy = "streets", fetch = FetchType.EAGER)
     private Set<City> cities;
 }

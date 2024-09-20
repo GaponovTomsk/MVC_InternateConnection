@@ -86,7 +86,7 @@ public class StatementController {
         //boolean contains = streetList.contains(street);
 
         for (Street s : streetList) {
-            if (s.getName().equals(street)) {
+            if (s.getName().equalsIgnoreCase(street)) {
                 contains = true;
                 break;
             }
