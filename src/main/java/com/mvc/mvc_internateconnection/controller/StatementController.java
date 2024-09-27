@@ -1,34 +1,35 @@
 package com.mvc.mvc_internateconnection.controller;
 
 
+import com.mvc.mvc_internateconnection.mapper.StatementMapper;
 import com.mvc.mvc_internateconnection.model.*;
+import com.mvc.mvc_internateconnection.model.dto.StatementDTO;
 import com.mvc.mvc_internateconnection.repository.CityRepository;
 import com.mvc.mvc_internateconnection.repository.StatementRepository;
 import com.mvc.mvc_internateconnection.service.city.CityService;
 import com.mvc.mvc_internateconnection.service.statement.StatementService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Set;
 
 @Controller
+@RequiredArgsConstructor
 public class StatementController {
 
 
     private static final Logger log = LoggerFactory.getLogger(StatementController.class);
-    private StatementService statementService;
-    private CityService cityService;
+    private final StatementService statementService;
+    private final CityService cityService;
+    private final StatementMapper statementMapper;
 
-    public StatementController(StatementService statementService, CityService cityService) {
-        this.statementService = statementService;
-        this.cityService = cityService;
-    }
+
 
     @GetMapping(value="/admin-panel")
     public String getAdminPanel(Model model) {
@@ -40,7 +41,7 @@ public class StatementController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String getViewFormRegistrationStatement(Model model){
-        Statement statement = new Statement();
+        StatementDTO statement = new StatementDTO();
         model.addAttribute("statement",statement);
         return "index";
     }
@@ -65,10 +66,10 @@ public class StatementController {
     //added javadoc comments
 
     @RequestMapping(value = "/add_bid", method = RequestMethod.POST)
-    public String addBidPost(@ModelAttribute Statement statement, Model model){
+    public String addBidPost(@ModelAttribute StatementDTO statementDTO, Model model){
 
-        String street = statement.getStreet();
-        String city = statement.getCity();
+        String street = statementDTO.getStreet();
+        String city = statementDTO.getCity();
 
         City city1 = cityService.findCityByName(city);
         if(city1 == null) {
@@ -97,11 +98,12 @@ public class StatementController {
             return "index";
         }
 
-        statementService.save(statement);
-        System.out.println(statement);
 
-        model.addAttribute("fullName",statement.getFullName());
-        model.addAttribute("phone", statement.getPhone());
+        statementService.save(statementMapper.toEntity(statementDTO));
+        System.out.println(statementDTO);
+
+        model.addAttribute("fullName",statementDTO.getFullName());
+        model.addAttribute("phone", statementDTO.getPhone());
         return "result";
     }
 }

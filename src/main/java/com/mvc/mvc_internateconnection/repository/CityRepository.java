@@ -12,5 +12,8 @@ import java.util.Optional;
 public interface CityRepository extends JpaRepository<City,Long> {
     @Query(value = "select c from City c JOIN FETCH c.streets where c.name = :city")
     Optional<City> findCityByNameWithStreets(@Param("city") String cityName);
+
+    Optional<City> findCityByName(String name);
+
 }
 

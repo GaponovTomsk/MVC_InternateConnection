@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -24,4 +25,5 @@ public class City {
             inverseJoinColumns = @JoinColumn(name = "street_id")
     )
     private Set<Street> streets;
+
 }

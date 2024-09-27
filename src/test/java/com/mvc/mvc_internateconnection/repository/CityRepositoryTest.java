@@ -1,6 +1,7 @@
 package com.mvc.mvc_internateconnection.repository;
 
 import com.mvc.mvc_internateconnection.model.City;
+import com.mvc.mvc_internateconnection.model.Street;
 import org.hibernate.Hibernate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -26,10 +27,12 @@ class CityRepositoryTest {
 
     @BeforeEach
     void setUp() {
+        //Метод срабатывает перед запуском теста
     }
 
     @AfterEach
     void tearDown() {
+        //Метод срабатывает после завершения теста
     }
 
     @Test
@@ -38,10 +41,14 @@ class CityRepositoryTest {
         Optional<City> rostov = cityRepository.findCityByNameWithStreets("Rostov");
 
 
-        Hibernate.initialize(rostov.get().getStreets());
         assertTrue(rostov.isPresent());
         assertEquals("Rostov",rostov.get().getName());
         assertEquals(2,rostov.get().getStreets().size());
+
+        Street street = new Street();
+        street.setName("Lenina");
+
+        assertTrue(rostov.get().getStreets().contains(street));
 
     }
 }
